@@ -737,21 +737,6 @@ body.admin-bar .header {
   animation: heroFadeUp 0.8s ease forwards 0.4s;
 }
 
-/* Subtitle */
-.hero-subtitle {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 1.18rem;
-  line-height: 1.75;
-  margin-bottom: 35px;
-  max-width: 540px;
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.hero-slide.active .hero-subtitle {
-  animation: heroFadeUp 0.7s ease forwards 0.6s;
-}
-
 /* Buttons */
 .hero-buttons {
   display: flex;
@@ -764,7 +749,7 @@ body.admin-bar .header {
 }
 
 .hero-slide.active .hero-buttons {
-  animation: heroFadeUp 0.7s ease forwards 0.8s;
+  animation: heroFadeUp 0.7s ease forwards 0.6s;
 }
 
 .hero-btn-main {
@@ -808,7 +793,7 @@ body.admin-bar .header {
 }
 
 .hero-slide.active .hero-trust {
-  animation: heroFadeUp 0.7s ease forwards 1s;
+  animation: heroFadeUp 0.7s ease forwards 0.85s;
 }
 
 .hero-trust-item {
@@ -1015,9 +1000,6 @@ body.admin-bar .header {
 
   .hero-title {
     font-size: 2.6rem;
-  }
-  .hero-subtitle {
-    font-size: 1rem;
   }
 
   .hero-arrow {

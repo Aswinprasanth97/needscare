@@ -113,8 +113,6 @@ $total_slides = count( $slides );
 
                         <h1 class="hero-title"><?php echo esc_html( 'Experience the Best in Nursing Care with Needs Care' ); ?></h1>
 
-                        <p class="hero-subtitle">Whether you need personalised support or specialised care, our team is here to support you every step of the way. We are committed to enhancing the quality of life of individuals through compassionate and professional care.</p>
-
                         <div class="hero-buttons">
                             <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn btn-primary hero-btn-main">
                                 <i class="fa-solid fa-calendar-check"></i> Get Support Today
