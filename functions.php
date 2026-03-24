@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'NEEDSCARE_VERSION', '1.0.4' );
+define( 'NEEDSCARE_VERSION', '1.0.5' );
 define( 'NEEDSCARE_DIR', get_template_directory() );
 define( 'NEEDSCARE_URI', get_template_directory_uri() );
 
@@ -566,6 +566,38 @@ add_action( 'save_post', 'needscare_save_testimonial_meta' );
 function needscare_get( $key, $default = '' ) {
     $value = get_theme_mod( $key, $default );
     return null === $value ? $default : $value;
+}
+
+/**
+ * Digits-only number for WhatsApp wa.me from Customizer contact_phone (default 0468 370 705 → 61468370705).
+ *
+ * @return string
+ */
+function needscare_whatsapp_phone_digits() {
+    $raw    = needscare_get( 'contact_phone', '0468 370 705' );
+    $digits = preg_replace( '/\D+/', '', (string) $raw );
+    if ( '' === $digits ) {
+        return '61468370705';
+    }
+    if ( 10 === strlen( $digits ) && '0' === $digits[0] ) {
+        return '61' . substr( $digits, 1 );
+    }
+    if ( 9 === strlen( $digits ) && '4' === $digits[0] ) {
+        return '61' . $digits;
+    }
+    if ( strlen( $digits ) >= 2 && '61' === substr( $digits, 0, 2 ) ) {
+        return $digits;
+    }
+    return '61' . $digits;
+}
+
+/**
+ * WhatsApp click-to-chat URL (opens app or web).
+ *
+ * @return string
+ */
+function needscare_whatsapp_url() {
+    return 'https://wa.me/' . needscare_whatsapp_phone_digits();
 }
 
 /**

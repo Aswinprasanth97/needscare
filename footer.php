@@ -101,6 +101,16 @@
 
 <?php get_template_part( 'template-parts/accessibility-toolbar' ); ?>
 
+<a
+    href="<?php echo esc_url( needscare_whatsapp_url() ); ?>"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="<?php esc_attr_e( 'Message us on WhatsApp', 'needscare' ); ?>"
+>
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+</a>
+
 <!-- Back to Top Button -->
 <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
     <i class="fa-solid fa-arrow-up"></i>
