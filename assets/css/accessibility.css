@@ -1,0 +1,637 @@
+/**
+ * NeedsCare Theme — Accessibility Styles
+ *
+ * NDIS / WCAG 2.2 AA Compliance
+ * @package NeedsCare
+ */
+
+/* =========================================================================
+   SKIP-TO-CONTENT LINK
+   ========================================================================= */
+.skip-to-content {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 14px 28px;
+    background-color: var(--primary-green);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 0 0 8px 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    transition: top 0.25s ease;
+}
+
+.skip-to-content:focus {
+    top: 0;
+    outline: 3px solid var(--secondary-blue);
+    outline-offset: 2px;
+}
+
+/* =========================================================================
+   GLOBAL FOCUS INDICATORS (WCAG 2.4.7 Focus Visible)
+   ========================================================================= */
+*:focus-visible {
+    outline: 3px solid var(--accent-teal);
+    outline-offset: 3px;
+    border-radius: 2px;
+}
+
+/* Links within text */
+a:focus-visible {
+    outline: 3px solid var(--accent-teal);
+    outline-offset: 2px;
+    border-radius: 3px;
+}
+
+/* Buttons */
+button:focus-visible,
+.btn:focus-visible {
+    outline: 3px solid var(--accent-teal);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 6px rgba(13, 148, 136, 0.2);
+}
+
+/* Form inputs */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid var(--accent-teal);
+    outline-offset: 1px;
+    box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15);
+}
+
+/* =========================================================================
+   ACCESSIBILITY TOOLBAR — TRIGGER BUTTON
+   ========================================================================= */
+.a11y-trigger {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9998;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 12px 0 0 12px;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-teal) 100%);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -3px 3px 15px rgba(0, 103, 56, 0.35);
+    transition: all 0.3s ease;
+    line-height: 1;
+}
+
+.a11y-trigger:hover {
+    width: 58px;
+    box-shadow: -4px 4px 20px rgba(0, 103, 56, 0.5);
+}
+
+.a11y-trigger:focus-visible {
+    outline: 3px solid #fff;
+    outline-offset: -3px;
+    box-shadow: -3px 3px 15px rgba(0, 103, 56, 0.35), 0 0 0 4px var(--accent-teal);
+}
+
+.a11y-trigger-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* =========================================================================
+   ACCESSIBILITY TOOLBAR — PANEL
+   ========================================================================= */
+.a11y-panel {
+    position: fixed;
+    top: 0;
+    right: -420px;
+    width: 380px;
+    max-width: 90vw;
+    height: 100vh;
+    z-index: 9999;
+    background: linear-gradient(180deg, #0f1f14 0%, #122218 40%, #0f172a 100%);
+    color: #e2e8f0;
+    overflow-y: auto;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -8px 0 40px rgba(0, 0, 0, 0.5);
+}
+
+.a11y-panel.open {
+    right: 0;
+}
+
+.a11y-panel-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9997;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    cursor: pointer;
+}
+
+.a11y-panel-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Panel Header */
+.a11y-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.a11y-panel-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.a11y-panel-title-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-teal) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.a11y-panel-title h3 {
+    font-family: var(--font-body);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.a11y-panel-title h3 small {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+}
+
+.a11y-close {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.a11y-close:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+/* Panel Body */
+.a11y-panel-body {
+    padding: 20px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Control Group */
+.a11y-control-group {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 20px;
+    transition: all 0.2s ease;
+}
+
+.a11y-control-group:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.a11y-control-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.a11y-control-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: rgba(13, 148, 136, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    color: var(--accent-teal);
+}
+
+.a11y-control-label span:last-child {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Font Size Slider Row */
+.a11y-font-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.a11y-font-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.a11y-font-btn:hover {
+    background: var(--accent-teal);
+    border-color: var(--accent-teal);
+    transform: scale(1.05);
+}
+
+.a11y-font-btn:active {
+    transform: scale(0.95);
+}
+
+.a11y-font-value {
+    flex: 1;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent-teal);
+    letter-spacing: 0.5px;
+    background: rgba(13, 148, 136, 0.1);
+    padding: 8px 4px;
+    border-radius: 8px;
+}
+
+/* Toggle Switch */
+.a11y-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.a11y-toggle-row .a11y-control-label {
+    margin-bottom: 0;
+}
+
+.a11y-toggle {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.a11y-toggle input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.a11y-toggle-slider {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.a11y-toggle-slider::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.a11y-toggle input:checked + .a11y-toggle-slider {
+    background: linear-gradient(135deg, var(--primary-green), var(--accent-teal));
+    border-color: var(--accent-teal);
+}
+
+.a11y-toggle input:checked + .a11y-toggle-slider::before {
+    left: calc(100% - 25px);
+    background: #fff;
+}
+
+.a11y-toggle input:focus-visible + .a11y-toggle-slider {
+    outline: 3px solid var(--accent-teal);
+    outline-offset: 2px;
+}
+
+/* Reset Button */
+.a11y-reset-btn {
+    margin-top: 8px;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.7);
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.a11y-reset-btn:hover {
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+/* NDIS Compliance Badge */
+.a11y-badge {
+    margin-top: 12px;
+    padding: 14px 20px;
+    background: rgba(13, 148, 136, 0.08);
+    border: 1px solid rgba(13, 148, 136, 0.15);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.a11y-badge p {
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.a11y-badge strong {
+    color: var(--accent-teal);
+    font-weight: 700;
+}
+
+/* =========================================================================
+   HIGH-CONTRAST MODE
+   ========================================================================= */
+body.a11y-high-contrast {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+body.a11y-high-contrast * {
+    border-color: #fff !important;
+}
+
+body.a11y-high-contrast .header {
+    background-color: #000 !important;
+    border-bottom-color: #fff !important;
+    backdrop-filter: none !important;
+}
+
+body.a11y-high-contrast .nav-link,
+body.a11y-high-contrast a,
+body.a11y-high-contrast p,
+body.a11y-high-contrast span,
+body.a11y-high-contrast li,
+body.a11y-high-contrast h1,
+body.a11y-high-contrast h2,
+body.a11y-high-contrast h3,
+body.a11y-high-contrast h4,
+body.a11y-high-contrast h5,
+body.a11y-high-contrast h6 {
+    color: #fff !important;
+}
+
+body.a11y-high-contrast a:hover,
+body.a11y-high-contrast a:focus {
+    color: #ffff00 !important;
+}
+
+body.a11y-high-contrast .btn-primary {
+    background-color: #ffff00 !important;
+    color: #000 !important;
+    border-color: #ffff00 !important;
+}
+
+body.a11y-high-contrast .btn-primary:hover {
+    background-color: #fff !important;
+    color: #000 !important;
+}
+
+body.a11y-high-contrast .section,
+body.a11y-high-contrast .section-bg-light,
+body.a11y-high-contrast .footer,
+body.a11y-high-contrast .hero-slide {
+    background-color: #000 !important;
+}
+
+body.a11y-high-contrast .service-card,
+body.a11y-high-contrast .svc-card,
+body.a11y-high-contrast .diff-card,
+body.a11y-high-contrast .testimonial-card,
+body.a11y-high-contrast .faq-item {
+    background: #111 !important;
+    border-color: #fff !important;
+}
+
+body.a11y-high-contrast .svc-title,
+body.a11y-high-contrast .svc-desc,
+body.a11y-high-contrast .svc-card i,
+body.a11y-high-contrast .svc-icon-wrap i {
+    color: #fff !important;
+}
+
+body.a11y-high-contrast .svc-card:hover .svc-title,
+body.a11y-high-contrast .svc-card:focus .svc-title,
+body.a11y-high-contrast .svc-card:hover .svc-desc,
+body.a11y-high-contrast .svc-card:focus .svc-desc,
+body.a11y-high-contrast .svc-card:hover .svc-card i,
+body.a11y-high-contrast .svc-card:focus .svc-card i {
+    color: #ffff00 !important;
+}
+
+body.a11y-high-contrast .dropdown-menu {
+    background-color: #111 !important;
+}
+
+body.a11y-high-contrast .dropdown-menu li a {
+    border-bottom-color: #333 !important;
+}
+
+body.a11y-high-contrast img {
+    filter: grayscale(100%) contrast(1.2);
+}
+
+/* High contrast focus indicator override */
+body.a11y-high-contrast *:focus-visible {
+    outline: 3px solid #ffff00 !important;
+    outline-offset: 3px;
+}
+
+/* =========================================================================
+   LARGE TEXT MODE
+   ========================================================================= */
+body.a11y-large-text {
+    font-size: 120% !important;
+}
+
+body.a11y-large-text h1 { font-size: 2.8rem !important; }
+body.a11y-large-text h2 { font-size: 2.2rem !important; }
+body.a11y-large-text h3 { font-size: 1.6rem !important; }
+body.a11y-large-text p,
+body.a11y-large-text li,
+body.a11y-large-text span { font-size: 1.15rem !important; }
+
+/* =========================================================================
+   DYSLEXIA-FRIENDLY FONT
+   ========================================================================= */
+body.a11y-dyslexia-font,
+body.a11y-dyslexia-font * {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', 'Arial', sans-serif !important;
+    letter-spacing: 0.05em !important;
+    word-spacing: 0.15em !important;
+}
+
+body.a11y-dyslexia-font p,
+body.a11y-dyslexia-font li {
+    line-height: 1.9 !important;
+}
+
+/* =========================================================================
+   HIGHLIGHT LINKS MODE
+   ========================================================================= */
+body.a11y-highlight-links a:not(.a11y-trigger):not(.a11y-close):not(.a11y-font-btn):not(.a11y-reset-btn):not(.skip-to-content) {
+    text-decoration: underline !important;
+    text-decoration-thickness: 2px !important;
+    text-underline-offset: 3px !important;
+    outline: 2px solid var(--accent-teal) !important;
+    outline-offset: 2px !important;
+    border-radius: 3px !important;
+    padding: 1px 4px !important;
+}
+
+body.a11y-high-contrast.a11y-highlight-links a:not(.a11y-trigger):not(.a11y-close):not(.a11y-font-btn):not(.a11y-reset-btn):not(.skip-to-content) {
+    outline-color: #ffff00 !important;
+    text-decoration-color: #ffff00 !important;
+}
+
+/* =========================================================================
+   REDUCED MOTION MODE
+   ========================================================================= */
+body.a11y-reduced-motion,
+body.a11y-reduced-motion *,
+body.a11y-reduced-motion *::before,
+body.a11y-reduced-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+}
+
+/* Respect OS-level preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* =========================================================================
+   TOOLBAR — RESPONSIVE
+   ========================================================================= */
+@media (max-width: 480px) {
+    .a11y-panel {
+        width: 100vw;
+        right: -100vw;
+    }
+
+    .a11y-trigger {
+        width: 46px;
+        height: 46px;
+        font-size: 1.3rem;
+        top: auto;
+        bottom: max(20px, calc(env(safe-area-inset-bottom, 0px) + 10px));
+        right: max(14px, calc(env(safe-area-inset-right, 0px) + 8px));
+        border-radius: 50%;
+        transform: none;
+    }
+
+    .a11y-trigger:hover {
+        width: 46px;
+    }
+
+    .a11y-panel-body {
+        padding: 16px 20px 100px;
+    }
+
+    .a11y-panel-header {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 481px) {
+    .a11y-trigger {
+        top: auto;
+        bottom: max(24px, calc(env(safe-area-inset-bottom, 0px) + 12px));
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        right: max(16px, calc(env(safe-area-inset-right, 0px) + 8px));
+        transform: none;
+    }
+
+    .a11y-trigger:hover {
+        width: 48px;
+    }
+}

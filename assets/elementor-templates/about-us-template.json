@@ -1,0 +1,454 @@
+{
+  "content": [
+    {
+      "id": "a1b2c3d4",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": { "unit": "px", "size": 1200 },
+        "min_height": { "unit": "px", "size": 520 },
+        "flex_align_items": "center",
+        "padding": { "unit": "px", "top": "160", "right": "0", "bottom": "120", "left": "0", "isLinked": false },
+        "background_background": "classic",
+        "background_image": { "url": "" },
+        "background_position": "center center",
+        "background_size": "cover",
+        "css_classes": "abt-hero"
+      },
+      "elements": [
+        {
+          "id": "e5f6a7b8",
+          "elType": "column",
+          "settings": { "content_position": "center", "_column_size": 100 },
+          "elements": [
+            {
+              "id": "c9d0e1f2",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-hero-overlay\"></div><div class=\"abt-hero-particles\" aria-hidden=\"true\"><div class=\"abt-particle abt-particle-1\"></div><div class=\"abt-particle abt-particle-2\"></div><div class=\"abt-particle abt-particle-3\"></div></div>"
+              }
+            },
+            {
+              "id": "a3b4c5d6",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<nav class=\"breadcrumbs\" aria-label=\"Breadcrumb\"><a href=\"/\"><i class=\"fa-solid fa-house\"></i> Home</a> <span class=\"breadcrumb-sep\" aria-hidden=\"true\">/</span> <span class=\"breadcrumb-current\">About Us</span></nav>",
+                "css_classes": "abt-hero-inner"
+              }
+            },
+            {
+              "id": "e7f8a9b0",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Compassionate Nursing & Disability Support You Can Trust",
+                "header_size": "h1",
+                "title_color": "#ffffff",
+                "typography_typography": "custom",
+                "typography_font_family": "DM Serif Display",
+                "typography_font_size": { "unit": "rem", "size": 3.2 },
+                "typography_font_weight": "800",
+                "css_classes": "abt-hero-title"
+              }
+            },
+            {
+              "id": "c1d2e3f4",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Needs Care provides personalised nursing and disability support services to help individuals live safely, independently, and with dignity.</p>",
+                "text_color": "rgba(255,255,255,0.85)",
+                "typography_typography": "custom",
+                "typography_font_size": { "unit": "rem", "size": 1.12 },
+                "css_classes": "abt-hero-subtitle"
+              }
+            },
+            {
+              "id": "a5b6c7d8",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-hero-actions\"><a href=\"/contact/\" class=\"btn btn-primary abt-hero-btn\"><i class=\"fa-solid fa-envelope\"></i> Contact Us</a> <a href=\"/referral/\" class=\"btn btn-outline abt-hero-btn-outline\"><i class=\"fa-solid fa-paper-plane\"></i> Make a Referral</a></div>"
+              }
+            },
+            {
+              "id": "e9f0a1b2",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-hero-wave\" aria-hidden=\"true\"><svg viewBox=\"0 0 1440 100\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" preserveAspectRatio=\"none\"><path d=\"M0,70 C360,10 720,90 1440,35 L1440,100 L0,100 Z\" fill=\"#f8fafb\"/></svg></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "b2c3d4e5",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": { "unit": "px", "size": 1200 },
+        "padding": { "unit": "px", "top": "80", "right": "0", "bottom": "80", "left": "0", "isLinked": false },
+        "background_background": "classic",
+        "background_color": "#f8fafb",
+        "css_classes": "abt-intro section"
+      },
+      "elements": [
+        {
+          "id": "f6a7b8c9",
+          "elType": "column",
+          "settings": { "_column_size": 50, "content_position": "center" },
+          "elements": [
+            {
+              "id": "d0e1f2a3",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<h4 class=\"section-subtitle\"><i class=\"fa-solid fa-heart-pulse\"></i> Who We Are</h4>",
+                "css_classes": "abt-intro-text"
+              }
+            },
+            {
+              "id": "b4c5d6e7",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "About Needs Care",
+                "header_size": "h2",
+                "css_classes": "section-title"
+              }
+            },
+            {
+              "id": "f8a9b0c1",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p>Needs Care is dedicated to providing compassionate and professional healthcare and disability support services. Our experienced nurses and support workers focus on improving the well-being, independence, and quality of life of every individual we support.</p><p>We believe everyone deserves respectful care, dignity, and the opportunity to live a fulfilling life. Our team works closely with participants and families to create personalised support plans tailored to their unique needs.</p>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "d2e3f4a5",
+          "elType": "column",
+          "settings": { "_column_size": 50 },
+          "elements": [
+            {
+              "id": "b6c7d8e9",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-img-stack\"><div class=\"abt-img-main\"><img src=\"/wp-content/themes/needscare-theme/assets/images/indigenous-care-main.png\" alt=\"Nurse caring for indigenous Australian patient\" loading=\"lazy\" /></div><div class=\"abt-img-accent\"><img src=\"/wp-content/themes/needscare-theme/assets/images/indigenous-care-accent.png\" alt=\"Support worker assisting indigenous Australian\" loading=\"lazy\" /></div><div class=\"abt-img-badge\"><i class=\"fa-solid fa-shield-halved\"></i><span>NDIS<br>Registered</span></div></div>",
+                "css_classes": "abt-intro-visual"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "c4d5e6f7",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": { "unit": "px", "size": 1200 },
+        "padding": { "unit": "px", "top": "80", "right": "0", "bottom": "80", "left": "0", "isLinked": false },
+        "background_background": "classic",
+        "background_color": "#f0f9f4",
+        "css_classes": "abt-mv section section-bg-light"
+      },
+      "elements": [
+        {
+          "id": "a8b9c0d1",
+          "elType": "column",
+          "settings": { "_column_size": 100 },
+          "elements": [
+            {
+              "id": "e2f3a4b5",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Mission & Vision",
+                "header_size": "h2",
+                "align": "center",
+                "css_classes": "section-title"
+              }
+            },
+            {
+              "id": "c6d7e8f9",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<h4 class=\"section-subtitle\" style=\"text-align:center;\"><i class=\"fa-solid fa-compass\"></i> Our Purpose</h4>",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "id": "a0b1c2d3",
+          "elType": "column",
+          "settings": { "_column_size": 50 },
+          "elements": [
+            {
+              "id": "e4f5a6b7",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-mv-card abt-mv-mission\"><div class=\"abt-mv-icon\"><i class=\"fa-solid fa-bullseye\"></i></div><h3>Our Mission</h3><p>Our mission is to deliver high-quality healthcare and disability support services that empower individuals to live healthier and more independent lives. We provide compassionate care through skilled nurses and dedicated support workers.</p><div class=\"abt-mv-accent\" aria-hidden=\"true\"></div></div>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "c8d9e0f1",
+          "elType": "column",
+          "settings": { "_column_size": 50 },
+          "elements": [
+            {
+              "id": "a2b3c4d5",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-mv-card abt-mv-vision\"><div class=\"abt-mv-icon\"><i class=\"fa-solid fa-eye\"></i></div><h3>Our Vision</h3><p>Our vision is to become a trusted provider of personalised care services that promote independence, dignity, and community participation.</p><div class=\"abt-mv-accent\" aria-hidden=\"true\"></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "d6e7f8a9",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": { "unit": "px", "size": 1200 },
+        "padding": { "unit": "px", "top": "100", "right": "0", "bottom": "100", "left": "0", "isLinked": false },
+        "background_background": "gradient",
+        "background_color": "#006738",
+        "background_color_b": "#2e3192",
+        "background_gradient_angle": { "unit": "deg", "size": 135 },
+        "css_classes": "abt-why section"
+      },
+      "elements": [
+        {
+          "id": "b0c1d2e3",
+          "elType": "column",
+          "settings": { "_column_size": 100 },
+          "elements": [
+            {
+              "id": "f4a5b6c7",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-why-bg\" aria-hidden=\"true\"><div class=\"abt-why-shape abt-why-shape-1\"></div><div class=\"abt-why-shape abt-why-shape-2\"></div><div class=\"abt-why-shape abt-why-shape-3\"></div></div>"
+              }
+            },
+            {
+              "id": "d8e9f0a1",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Why Choose Needs Care",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#ffffff",
+                "css_classes": "section-title"
+              }
+            },
+            {
+              "id": "b2c3d4e6",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<h4 class=\"section-subtitle\" style=\"color:rgba(255,255,255,0.7);text-align:center;\"><i class=\"fa-solid fa-award\"></i> Why Choose Us</h4>",
+                "align": "center"
+              }
+            }
+          ]
+        },
+        {
+          "id": "f6a7b8ca",
+          "elType": "column",
+          "settings": { "_column_size": 33 },
+          "elements": [
+            {
+              "id": "d0e1f2a4",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-why-card\"><div class=\"abt-why-card-icon\"><i class=\"fa-solid fa-user-doctor\"></i></div><h3>Expert Team</h3><p>Experienced nurses and support workers committed to patient safety and quality care.</p></div>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "b4c5d6e8",
+          "elType": "column",
+          "settings": { "_column_size": 33 },
+          "elements": [
+            {
+              "id": "f8a9b0c2",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-why-card\"><div class=\"abt-why-card-icon\"><i class=\"fa-solid fa-hand-holding-heart\"></i></div><h3>Personalised Care</h3><p>Individualised support plans designed around each participant's needs.</p></div>"
+              }
+            }
+          ]
+        },
+        {
+          "id": "d2e3f4a6",
+          "elType": "column",
+          "settings": { "_column_size": 34 },
+          "elements": [
+            {
+              "id": "b6c7d8ea",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-why-card\"><div class=\"abt-why-card-icon\"><i class=\"fa-solid fa-clock-rotate-left\"></i></div><h3>24/7 Support</h3><p>Reliable support whenever assistance is needed, around the clock.</p></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "e8f9a0b1",
+      "elType": "section",
+      "settings": {
+        "layout": "boxed",
+        "content_width": { "unit": "px", "size": 1200 },
+        "padding": { "unit": "px", "top": "80", "right": "0", "bottom": "80", "left": "0", "isLinked": false },
+        "background_background": "classic",
+        "background_color": "#f8fafb",
+        "css_classes": "abt-services section"
+      },
+      "elements": [
+        {
+          "id": "c2d3e4f5",
+          "elType": "column",
+          "settings": { "_column_size": 100 },
+          "elements": [
+            {
+              "id": "a6b7c8d9",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<h4 class=\"section-subtitle\" style=\"text-align:center;\"><i class=\"fa-solid fa-hand-holding-medical\"></i> What We Offer</h4>",
+                "align": "center"
+              }
+            },
+            {
+              "id": "e0f1a2b3",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Our Services",
+                "header_size": "h2",
+                "align": "center",
+                "css_classes": "section-title"
+              }
+            },
+            {
+              "id": "c4d5e6f8",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p style=\"text-align:center;\" class=\"abt-services-desc\">We provide a comprehensive range of disability and nursing support services to empower independence.</p>",
+                "align": "center"
+              }
+            },
+            {
+              "id": "a8b9c0d2",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-services-grid mt-50\"><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-house-chimney-user\"></i></div><h4>Household Tasks</h4></div><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-van-shuttle\"></i></div><h4>Assistance with Travel & Transport</h4></div><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-hand-holding-medical\"></i></div><h4>High-Intensity Daily Personal Activities</h4></div><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-user-nurse\"></i></div><h4>Community Nursing Care</h4></div><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-people-roof\"></i></div><h4>Daily Life Tasks in Shared Living</h4></div><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-people-pulling\"></i></div><h4>Innovative Community Participation</h4></div><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-users-rectangle\"></i></div><h4>Social & Civic Participation</h4></div><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-building-user\"></i></div><h4>Group-Based Centre Activities</h4></div><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-graduation-cap\"></i></div><h4>Development & Life Skills</h4></div><div class=\"abt-svc-item\"><div class=\"abt-svc-icon\"><i class=\"fa-solid fa-diagram-project\"></i></div><h4>Support Coordination & Life Transitions</h4></div></div>"
+              }
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "f0a1b2c3",
+      "elType": "section",
+      "settings": {
+        "layout": "full_width",
+        "content_width": { "unit": "px", "size": 1200 },
+        "padding": { "unit": "px", "top": "100", "right": "0", "bottom": "100", "left": "0", "isLinked": false },
+        "background_background": "gradient",
+        "background_color": "#006738",
+        "background_color_b": "#2e3192",
+        "background_gradient_angle": { "unit": "deg", "size": 135 },
+        "css_classes": "abt-cta"
+      },
+      "elements": [
+        {
+          "id": "d4e5f6a7",
+          "elType": "column",
+          "settings": { "_column_size": 100, "align": "center" },
+          "elements": [
+            {
+              "id": "b8c9d0e1",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-cta-bg\" aria-hidden=\"true\"><div class=\"abt-cta-shape abt-cta-shape-1\"></div><div class=\"abt-cta-shape abt-cta-shape-2\"></div></div>"
+              }
+            },
+            {
+              "id": "f2a3b4c5",
+              "elType": "widget",
+              "widgetType": "heading",
+              "settings": {
+                "title": "Need Personalised Care & Support?",
+                "header_size": "h2",
+                "align": "center",
+                "title_color": "#ffffff",
+                "typography_typography": "custom",
+                "typography_font_family": "DM Serif Display",
+                "typography_font_size": { "unit": "rem", "size": 2.8 },
+                "css_classes": "abt-cta-content"
+              }
+            },
+            {
+              "id": "d6e7f8aa",
+              "elType": "widget",
+              "widgetType": "text-editor",
+              "settings": {
+                "editor": "<p style=\"text-align:center;\">Our dedicated team is ready to help you or your loved ones live safely and independently.</p>",
+                "text_color": "rgba(255,255,255,0.85)",
+                "align": "center"
+              }
+            },
+            {
+              "id": "b0c1d2e4",
+              "elType": "widget",
+              "widgetType": "html",
+              "settings": {
+                "html": "<div class=\"abt-cta-buttons\"><a href=\"/contact/\" class=\"btn btn-primary abt-cta-btn\"><i class=\"fa-solid fa-envelope\"></i> Contact Us</a> <a href=\"/referral/\" class=\"btn abt-cta-btn-alt\"><i class=\"fa-solid fa-heart-pulse\"></i> Get Support Today</a></div>"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "page_settings": {
+    "template": "elementor_header_footer"
+  },
+  "version": "0.4",
+  "title": "About Us - Needs Care",
+  "type": "page"
+}
