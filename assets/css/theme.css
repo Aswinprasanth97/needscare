@@ -58,7 +58,8 @@
   /* Offset when WP admin bar shows (body.admin-bar); re-resolved for descendants */
   --wp-admin-offset: 0px;
   --hero-clear-top: calc(
-    env(safe-area-inset-top, 0px) + var(--wp-admin-offset) + (var(--header-pad-y) * 2) + var(--header-bar-h) + 28px
+    env(safe-area-inset-top, 0px) + var(--wp-admin-offset) +
+      (var(--header-pad-y) * 2) + var(--header-bar-h) + 28px
   );
 }
 
@@ -1944,7 +1945,12 @@ body.admin-bar .header {
     border-radius: 14px;
     border: 1px solid rgba(0, 103, 56, 0.12);
     border-left: 4px solid var(--primary-green);
-    background: linear-gradient(135deg, #ffffff 0%, var(--light-green) 55%, #ffffff 100%);
+    background: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      var(--light-green) 55%,
+      #ffffff 100%
+    );
     box-shadow: 0 2px 14px rgba(0, 39, 22, 0.06);
     transform: none;
     box-sizing: border-box;
@@ -2371,7 +2377,7 @@ body.admin-bar .header {
   height: 60%;
   top: 0;
   right: 0;
-  background-image: url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=2680&auto=format&fit=crop");
+  background-image: url("https://dodgerblue-weasel-223588.hostingersite.com/wp-content/uploads/2026/03/Gemini_Generated_Image_2hcv8x2hcv8x2hcv-scaled.png");
   z-index: 1;
 }
 
@@ -5454,11 +5460,7 @@ body.a11y-high-contrast .abt-services {
 .gal-intro-section {
   padding-top: 48px;
   padding-bottom: 24px;
-  background: linear-gradient(
-    180deg,
-    var(--white) 0%,
-    var(--off-white) 100%
-  );
+  background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
 }
 
 .gal-intro-inner {
