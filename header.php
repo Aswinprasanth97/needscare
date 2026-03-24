@@ -27,6 +27,9 @@ $needscare_uploads   = wp_get_upload_dir();
 $needscare_ndis_badge = ( ! empty( $needscare_uploads['baseurl'] ) )
 	? trailingslashit( $needscare_uploads['baseurl'] ) . '2026/03/we-ndis-logo-img.png'
 	: '';
+$needscare_header_logo = ( ! empty( $needscare_uploads['baseurl'] ) )
+	? trailingslashit( $needscare_uploads['baseurl'] ) . '2026/02/Needs-Care-Colour-Logo-removebg-preview.png'
+	: '';
 ?>
 
 <!-- Header / Navigation -->
@@ -36,6 +39,15 @@ $needscare_ndis_badge = ( ! empty( $needscare_uploads['baseurl'] ) )
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?> — <?php esc_attr_e( 'Home', 'needscare' ); ?>">
             <?php if ( has_custom_logo() ) : ?>
                 <?php the_custom_logo(); ?>
+            <?php elseif ( $needscare_header_logo ) : ?>
+                <img
+                    src="<?php echo esc_url( $needscare_header_logo ); ?>"
+                    alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>"
+                    class="header-default-logo-img"
+                    width="200"
+                    height="80"
+                    decoding="async"
+                />
             <?php else : ?>
                 <span class="logo-icon" aria-hidden="true">&#x2624;</span>
                 <div class="logo-text">

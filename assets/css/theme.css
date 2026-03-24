@@ -348,6 +348,14 @@ body.admin-bar .header {
   letter-spacing: 1px;
 }
 
+.header-default-logo-img {
+  display: block;
+  max-height: 54px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 /* Navigation */
 .nav-list {
   display: flex;
@@ -3490,7 +3498,8 @@ body.admin-bar .header {
     display: none !important;
   }
 
-  .header-container .logo .custom-logo-link img {
+  .header-container .logo .custom-logo-link img,
+  .header-container .logo .header-default-logo-img {
     max-height: 42px;
     width: auto;
   }

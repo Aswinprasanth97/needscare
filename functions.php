@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'NEEDSCARE_VERSION', '1.0.2' );
+define( 'NEEDSCARE_VERSION', '1.0.3' );
 define( 'NEEDSCARE_DIR', get_template_directory() );
 define( 'NEEDSCARE_URI', get_template_directory_uri() );
 
