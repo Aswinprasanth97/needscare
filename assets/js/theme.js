@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, observerOptions);
 
     // Observe elements for scroll animation
-    const animateElements = document.querySelectorAll('.svc-card, .pillar, .about-text, .about-images, .contact-info-card, .faq-item, .testimonials-header, .reveal-on-scroll');
+    const animateElements = document.querySelectorAll('.svc-card, .pillar, .about-text, .about-images, .contact-info-card, .faq-item, .testimonials-header, .gal-item, .reveal-on-scroll');
     animateElements.forEach(el => {
         el.classList.add('reveal-on-scroll');
         observer.observe(el);
@@ -414,6 +414,96 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         tStartAuto();
+    }
+
+    /* =========================================================
+       Gallery page — lightbox
+       ========================================================= */
+    const galRoot = document.querySelector('[data-gal-lightbox]');
+    const galBtns = document.querySelectorAll('.gal-item-btn');
+    if (galRoot && galBtns.length) {
+        const galImg = galRoot.querySelector('.gal-lightbox-img');
+        const galCap = galRoot.querySelector('.gal-lightbox-caption');
+        const galCloses = galRoot.querySelectorAll('[data-gal-close]');
+        const galPrev = galRoot.querySelector('[data-gal-prev]');
+        const galNext = galRoot.querySelector('[data-gal-next]');
+
+        const items = Array.from(galBtns).map((btn) => ({
+            src: btn.dataset.galSrc || '',
+            alt: btn.dataset.galAlt || '',
+            cap: btn.dataset.galCap || ''
+        }));
+
+        let galIndex = 0;
+        let galLastFocus = null;
+
+        function galRender() {
+            const cur = items[galIndex];
+            if (!galImg || !cur) return;
+            galImg.src = cur.src;
+            galImg.alt = cur.alt;
+            if (galCap) {
+                galCap.textContent = cur.cap || '';
+                galCap.hidden = !cur.cap;
+            }
+        }
+
+        function galOpen(index) {
+            galIndex = (index + items.length) % items.length;
+            galLastFocus = document.activeElement;
+            galRoot.hidden = false;
+            galRoot.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('gal-lightbox-open');
+            galRender();
+            const closeBtn = galRoot.querySelector('.gal-lightbox-close');
+            if (closeBtn) closeBtn.focus();
+        }
+
+        function galClose() {
+            galRoot.hidden = true;
+            galRoot.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('gal-lightbox-open');
+            if (galLastFocus && typeof galLastFocus.focus === 'function') {
+                galLastFocus.focus();
+            }
+        }
+
+        galBtns.forEach((btn, i) => {
+            btn.addEventListener('click', () => galOpen(i));
+        });
+
+        galCloses.forEach((el) => {
+            el.addEventListener('click', galClose);
+        });
+
+        if (galPrev) {
+            galPrev.addEventListener('click', () => {
+                galIndex = (galIndex - 1 + items.length) % items.length;
+                galRender();
+            });
+        }
+        if (galNext) {
+            galNext.addEventListener('click', () => {
+                galIndex = (galIndex + 1) % items.length;
+                galRender();
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (galRoot.hidden) return;
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                galClose();
+            }
+            if (e.key === 'ArrowLeft' && galPrev) {
+                e.preventDefault();
+                galPrev.click();
+            }
+            if (e.key === 'ArrowRight' && galNext) {
+                e.preventDefault();
+                galNext.click();
+            }
+        });
     }
 
     /* =========================================================

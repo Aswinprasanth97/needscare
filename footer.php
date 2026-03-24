@@ -41,6 +41,7 @@
                     <ul class="footer-links">
                         <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>">&gt; Home</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>">&gt; About Us</a></li>
+                        <li><a href="<?php echo esc_url( needscare_gallery_permalink() ); ?>">&gt; <?php esc_html_e( 'Gallery', 'needscare' ); ?></a></li>
                         <li><a href="<?php echo esc_url( home_url( '/services/' ) ); ?>">&gt; Services</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/referral/' ) ); ?>">&gt; Referral</a></li>
                         <li><a href="<?php echo esc_url( home_url( '/career/' ) ); ?>">&gt; Career</a></li>

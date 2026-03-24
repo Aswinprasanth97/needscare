@@ -62,6 +62,7 @@ $needscare_ndis_badge = ( ! empty( $needscare_uploads['baseurl'] ) )
                 <ul class="nav-list">
                     <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nav-link<?php echo is_front_page() ? ' active' : ''; ?>">Home</a></li>
                     <li><a href="<?php echo esc_url( home_url( '/about-us/' ) ); ?>" class="nav-link<?php echo is_page( 'about-us' ) ? ' active' : ''; ?>">About Us</a></li>
+                    <li><a href="<?php echo esc_url( needscare_gallery_permalink() ); ?>" class="nav-link<?php echo needscare_is_gallery_page() ? ' active' : ''; ?>"><?php esc_html_e( 'Gallery', 'needscare' ); ?></a></li>
                     <li class="dropdown">
                         <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>" class="nav-link<?php echo is_page( 'services' ) || is_page( array( 'assist-life-stage-transition', 'assist-personal-activities', 'assist-travel-transport', 'community-nursing-care', 'daily-tasks-shared-living', 'innov-community-participation', 'development-life-skills', 'household-tasks', 'participate-community', 'group-centre-activities' ) ) ? ' active' : ''; ?>">Services<span class="nav-link-caret" aria-hidden="true"> &#9662;</span></a>
                         <ul class="dropdown-menu">

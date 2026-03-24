@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'NEEDSCARE_VERSION', '1.0.1' );
+define( 'NEEDSCARE_VERSION', '1.0.2' );
 define( 'NEEDSCARE_DIR', get_template_directory() );
 define( 'NEEDSCARE_URI', get_template_directory_uri() );
 
@@ -567,3 +567,222 @@ function needscare_get( $key, $default = '' ) {
     $value = get_theme_mod( $key, $default );
     return null === $value ? $default : $value;
 }
+
+/**
+ * Recursively remove core/gallery blocks (custom grid renders images separately).
+ *
+ * @param array $blocks Parsed blocks.
+ * @return array
+ */
+function needscare_strip_gallery_blocks_recursive( $blocks ) {
+    $kept = array();
+    foreach ( $blocks as $block ) {
+        if ( isset( $block['blockName'] ) && 'core/gallery' === $block['blockName'] ) {
+            continue;
+        }
+        if ( ! empty( $block['innerBlocks'] ) ) {
+            $block['innerBlocks'] = needscare_strip_gallery_blocks_recursive( $block['innerBlocks'] );
+        }
+        $kept[] = $block;
+    }
+    return $kept;
+}
+
+/**
+ * Page content with Gallery blocks / [gallery] shortcodes removed (for Gallery page intro).
+ *
+ * @param int $post_id Post ID.
+ * @return string Raw post content without galleries.
+ */
+function needscare_get_page_content_without_gallery( $post_id ) {
+    $post = get_post( $post_id );
+    if ( ! $post ) {
+        return '';
+    }
+    $raw = $post->post_content;
+    if ( function_exists( 'has_blocks' ) && has_blocks( $raw ) ) {
+        $blocks = parse_blocks( $raw );
+        $blocks = needscare_strip_gallery_blocks_recursive( $blocks );
+        $raw    = '';
+        foreach ( $blocks as $b ) {
+            $raw .= serialize_block( $b );
+        }
+    } else {
+        $raw = preg_replace( '/\[\s*gallery(?:\s[^\]]*)?\s*\]/i', '', $raw );
+    }
+    return $raw;
+}
+
+/**
+ * Collect image attachment IDs for the Gallery page template.
+ *
+ * @param int $post_id Post ID.
+ * @return int[] Unique attachment IDs.
+ */
+function needscare_get_gallery_image_ids( $post_id ) {
+    $ids = array();
+
+    $attached = get_posts(
+        array(
+            'post_type'      => 'attachment',
+            'post_mime_type' => 'image',
+            'post_parent'    => $post_id,
+            'posts_per_page' => -1,
+            'orderby'        => array(
+                'menu_order' => 'ASC',
+                'ID'         => 'ASC',
+            ),
+            'post_status'    => 'inherit',
+            'fields'         => 'ids',
+        )
+    );
+    $ids = array_merge( $ids, $attached );
+
+    $post = get_post( $post_id );
+    if ( $post && function_exists( 'get_post_galleries' ) ) {
+        foreach ( get_post_galleries( $post, false ) as $gal ) {
+            if ( empty( $gal['ids'] ) ) {
+                continue;
+            }
+            foreach ( explode( ',', $gal['ids'] ) as $id ) {
+                $id = absint( $id );
+                if ( $id ) {
+                    $ids[] = $id;
+                }
+            }
+        }
+    }
+
+    if ( $post && function_exists( 'has_blocks' ) && has_blocks( $post->post_content ) ) {
+        needscare_collect_gallery_ids_from_blocks( parse_blocks( $post->post_content ), $ids );
+    }
+
+    $ids = array_values( array_unique( array_filter( array_map( 'absint', $ids ) ) ) );
+    return $ids;
+}
+
+/**
+ * @param array $blocks Parsed blocks.
+ * @param int[] $ids    Collected IDs (by reference).
+ */
+function needscare_collect_gallery_ids_from_blocks( $blocks, &$ids ) {
+    foreach ( $blocks as $block ) {
+        if ( ! empty( $block['blockName'] ) && 'core/gallery' === $block['blockName'] ) {
+            if ( ! empty( $block['attrs']['ids'] ) && is_array( $block['attrs']['ids'] ) ) {
+                foreach ( $block['attrs']['ids'] as $id ) {
+                    $id = absint( $id );
+                    if ( $id ) {
+                        $ids[] = $id;
+                    }
+                }
+            }
+            if ( ! empty( $block['innerBlocks'] ) ) {
+                foreach ( $block['innerBlocks'] as $inner ) {
+                    if ( ! empty( $inner['blockName'] ) && 'core/image' === $inner['blockName'] && ! empty( $inner['attrs']['id'] ) ) {
+                        $ids[] = absint( $inner['attrs']['id'] );
+                    }
+                }
+            }
+        }
+        if ( ! empty( $block['innerBlocks'] ) ) {
+            needscare_collect_gallery_ids_from_blocks( $block['innerBlocks'], $ids );
+        }
+    }
+}
+
+/**
+ * Permalink for the page using the Gallery template (or /gallery/ if none yet).
+ *
+ * @return string
+ */
+function needscare_gallery_permalink() {
+    $pages = get_pages(
+        array(
+            'meta_key'    => '_wp_page_template',
+            'meta_value'  => 'page-gallery.php',
+            'number'      => 1,
+            'post_status' => 'publish',
+        )
+    );
+    if ( ! empty( $pages ) ) {
+        return get_permalink( $pages[0]->ID );
+    }
+    return home_url( '/gallery/' );
+}
+
+/**
+ * Whether the current view is the Gallery page template.
+ *
+ * @return bool
+ */
+function needscare_is_gallery_page() {
+    return is_page_template( 'page-gallery.php' );
+}
+
+/**
+ * Insert Gallery after About Us in primary / footer menus (Appearance → Menus).
+ *
+ * @param WP_Post[] $items Sorted menu items.
+ * @param object    $args  wp_nav_menu() args.
+ * @return WP_Post[]|object[]
+ */
+function needscare_inject_gallery_menu_item( $items, $args ) {
+    if ( empty( $args->theme_location ) ) {
+        return $items;
+    }
+    if ( 'primary' !== $args->theme_location && 'footer' !== $args->theme_location ) {
+        return $items;
+    }
+
+    $url = needscare_gallery_permalink();
+    foreach ( $items as $item ) {
+        if ( ! empty( $item->url ) && untrailingslashit( $item->url ) === untrailingslashit( $url ) ) {
+            return $items;
+        }
+    }
+
+    $inject_after = -1;
+    foreach ( $items as $i => $item ) {
+        if ( empty( $item->url ) ) {
+            continue;
+        }
+        $path = (string) wp_parse_url( $item->url, PHP_URL_PATH );
+        if ( $path && preg_match( '#/about-us/?$#i', $path ) ) {
+            $inject_after = $i;
+            break;
+        }
+    }
+
+    $active = needscare_is_gallery_page();
+    $g      = new stdClass();
+    $g->ID                    = ( 'primary' === $args->theme_location ) ? -90210 : -90211;
+    $g->db_id                 = $g->ID;
+    $g->menu_item_parent      = 0;
+    $g->object                = 'custom';
+    $g->type                  = 'custom';
+    $g->type_label            = 'Custom';
+    $g->title                 = __( 'Gallery', 'needscare' );
+    $g->url                   = $url;
+    $g->target                = '';
+    $g->attr_title            = '';
+    $g->description           = '';
+    $g->classes               = array( 'menu-item', 'menu-item-type-custom', 'menu-item-object-custom' );
+    $g->xfn                   = '';
+    $g->current               = $active;
+    $g->current_item_ancestor = false;
+    $g->current_item_parent   = false;
+    $g->post_parent           = 0;
+    if ( $active ) {
+        $g->classes[] = 'current-menu-item';
+        $g->classes[] = 'current_page_item';
+    }
+
+    if ( $inject_after >= 0 ) {
+        array_splice( $items, $inject_after + 1, 0, array( $g ) );
+    } else {
+        $items[] = $g;
+    }
+
+    return $items;
+}
+add_filter( 'wp_nav_menu_objects', 'needscare_inject_gallery_menu_item', 10, 2 );
