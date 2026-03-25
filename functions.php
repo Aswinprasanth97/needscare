@@ -569,6 +569,17 @@ function needscare_get( $key, $default = '' ) {
 }
 
 /**
+ * Tel URI for contact_phone (digits only, suitable for href="tel:...").
+ *
+ * @return string Empty if no digits in stored value.
+ */
+function needscare_contact_tel_href() {
+    $raw    = needscare_get( 'contact_phone', '0468 370 705' );
+    $digits = preg_replace( '/\D+/', '', (string) $raw );
+    return '' === $digits ? '' : 'tel:' . $digits;
+}
+
+/**
  * Digits-only number for WhatsApp wa.me from Customizer contact_phone (default 0468 370 705 → 61468370705).
  *
  * @return string

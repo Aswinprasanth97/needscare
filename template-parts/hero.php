@@ -117,9 +117,6 @@ $total_slides = count( $slides );
                             <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn btn-primary hero-btn-main">
                                 <i class="fa-solid fa-calendar-check"></i> Get Support Today
                             </a>
-                            <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" class="btn btn-outline hero-btn-outline">
-                                <i class="fa-solid fa-comments"></i> Contact Our Team
-                            </a>
                         </div>
 
                         <!-- Trust indicators -->

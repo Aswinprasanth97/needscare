@@ -80,7 +80,7 @@ $services = array(
                 <p class="services-header-desc">We provide a wide range of disability and nursing support services to help individuals live independently and comfortably.</p>
             </div>
             <div class="services-header-cta">
-                <a href="tel:<?php echo esc_attr( str_replace( ' ', '', (string) needscare_get( 'contact_phone', '0468370705' ) ) ); ?>" class="btn btn-primary services-call-btn">
+                <a href="<?php echo esc_url( needscare_contact_tel_href() ?: 'tel:0468370705' ); ?>" class="btn btn-primary services-call-btn">
                     <i class="fa-solid fa-phone"></i>
                     Call <?php echo esc_html( needscare_get( 'contact_phone', '0468 370 705' ) ); ?>
                 </a>

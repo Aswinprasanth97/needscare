@@ -38,12 +38,32 @@ get_header(); ?>
                 <div class="contact-info-card">
                     <span class="icon">&#9742;</span>
                     <h4>Phone</h4>
-                    <p><?php echo esc_html( needscare_get( 'contact_phone', '0468 370 705' ) ); ?></p>
+                    <p>
+                        <?php
+                        $needscare_phone = needscare_get( 'contact_phone', '0468 370 705' );
+                        $needscare_tel   = needscare_contact_tel_href();
+                        if ( $needscare_tel ) :
+                            ?>
+                            <a href="<?php echo esc_url( $needscare_tel ); ?>"><?php echo esc_html( $needscare_phone ); ?></a>
+                        <?php else : ?>
+                            <?php echo esc_html( $needscare_phone ); ?>
+                        <?php endif; ?>
+                    </p>
                 </div>
                 <div class="contact-info-card">
                     <span class="icon">&#9993;</span>
                     <h4>Email</h4>
-                    <p><?php echo esc_html( needscare_get( 'contact_email', 'info@needscare.com.au' ) ); ?></p>
+                    <p>
+                        <?php
+                        $needscare_email = needscare_get( 'contact_email', 'info@needscare.com.au' );
+                        $needscare_mail  = sanitize_email( $needscare_email );
+                        if ( $needscare_mail ) :
+                            ?>
+                            <a href="<?php echo esc_url( 'mailto:' . $needscare_mail ); ?>"><?php echo esc_html( $needscare_email ); ?></a>
+                        <?php else : ?>
+                            <?php echo esc_html( $needscare_email ); ?>
+                        <?php endif; ?>
+                    </p>
                 </div>
             </div>
         </div>
