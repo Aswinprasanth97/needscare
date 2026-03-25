@@ -14,6 +14,8 @@ define( 'NEEDSCARE_VERSION', '1.0.6' );
 define( 'NEEDSCARE_DIR', get_template_directory() );
 define( 'NEEDSCARE_URI', get_template_directory_uri() );
 
+require_once NEEDSCARE_DIR . '/inc/service-pages.php';
+
 /**
  * Theme Setup
  */
@@ -55,6 +57,7 @@ function needscare_setup() {
     // Add image sizes
     add_image_size( 'needscare-hero', 1920, 800, true );
     add_image_size( 'needscare-service', 600, 400, true );
+    add_image_size( 'needscare-service-featured', 1200, 630, true );
 
     // Wide alignment support (Gutenberg + Elementor)
     add_theme_support( 'align-wide' );

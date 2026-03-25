@@ -3942,8 +3942,123 @@ a.service-card-link:hover {
 }
 
 /* =========================================================================
-   SERVICE DETAIL PAGE
+   SERVICE DETAIL PAGE — full-width image hero + title overlay
    ========================================================================= */
+.service-detail-featured-section {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.service-detail-featured-media {
+  position: relative;
+  width: 100%;
+  min-height: clamp(300px, 52vh, 620px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.service-detail-featured-media.no-media {
+  background: linear-gradient(160deg, #003d22, #004d30, #1c1f6e, #003d22);
+  background-size: 300% 300%;
+  animation: phGradientShift 8s ease infinite;
+}
+
+.service-detail-featured-figure {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.service-detail-featured-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-detail-featured-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 20, 12, 0.88) 0%,
+    rgba(0, 30, 18, 0.45) 45%,
+    transparent 100%
+  );
+}
+
+/* Uses .container for same max-width and horizontal padding as page sections below */
+.service-detail-featured-headline {
+  position: relative;
+  z-index: 2;
+  padding-top: 28px;
+  padding-bottom: 52px;
+  text-align: left;
+}
+
+.service-detail-featured-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.service-detail-featured-breadcrumb a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color var(--transition-speed);
+}
+
+.service-detail-featured-breadcrumb a:hover {
+  color: #fff;
+}
+
+.service-detail-featured-breadcrumb-sep {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.65rem;
+}
+
+.service-detail-featured-breadcrumb-current {
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 100%;
+}
+
+.service-detail-featured-title {
+  margin: 0;
+  font-size: clamp(1.75rem, 4vw, 2.85rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .service-detail-featured-media {
+    min-height: clamp(260px, 42vh, 480px);
+  }
+
+  .service-detail-featured-headline {
+    padding-top: 22px;
+    padding-bottom: 40px;
+  }
+}
+
 .service-detail-grid {
   display: grid;
   grid-template-columns: 1fr 350px;

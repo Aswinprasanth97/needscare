@@ -7,18 +7,7 @@
 
 get_header();
 
-$services = array(
-    array( 'icon' => 'fa-handshake',               'title' => 'Assist-Life Stage, Transition', 'desc' => 'Support to manage life stages, transitions, and supports to foster independence.', 'slug' => 'assist-life-stage-transition' ),
-    array( 'icon' => 'fa-person-walking-with-cane','title' => 'Assist-Personal Activities',    'desc' => 'Assistance with daily personal activities to enable people to live as autonomously as possible.', 'slug' => 'assist-personal-activities' ),
-    array( 'icon' => 'fa-car-side',                'title' => 'Assist-Travel/Transport',       'desc' => 'Assistance with travel and transport arrangements for community, social, or economic participation.', 'slug' => 'assist-travel-transport' ),
-    array( 'icon' => 'fa-user-nurse',              'title' => 'Community Nursing Care',        'desc' => 'A wide range of nursing support services to help manage daily living activities within the comfort of home.', 'slug' => 'community-nursing-care' ),
-    array( 'icon' => 'fa-house-user',              'title' => 'Daily Tasks/Shared Living',     'desc' => 'Assistance with daily life tasks in a group or shared living arrangement.', 'slug' => 'daily-tasks-shared-living' ),
-    array( 'icon' => 'fa-lightbulb',               'title' => 'Innov Community Participation', 'desc' => 'Innovative community participation focused on building skills for independence and well-being.', 'slug' => 'innov-community-participation' ),
-    array( 'icon' => 'fa-chart-line',              'title' => 'Development-Life Skills',       'desc' => 'Development of daily living and life skills to increase independence in the community.', 'slug' => 'development-life-skills' ),
-    array( 'icon' => 'fa-broom',                   'title' => 'Household Tasks',               'desc' => 'Support staff to assist with household tasks to maintain a clean and safe home environment.', 'slug' => 'household-tasks' ),
-    array( 'icon' => 'fa-city',                    'title' => 'Participate Community',         'desc' => 'Support to safely and actively participate in community, social, and civic activities.', 'slug' => 'participate-community' ),
-    array( 'icon' => 'fa-users',                   'title' => 'Group/Centre Activities',       'desc' => 'Assistance to access and participate in group-based community, social, and recreational activities.', 'slug' => 'group-centre-activities' ),
-);
+$services = needscare_get_service_definitions();
 ?>
 
 <main class="main-content" id="main-content" role="main">
@@ -45,10 +34,10 @@ $services = array(
             </div>
 
             <div class="services-grid">
-                <?php foreach ( $services as $service ) : ?>
-                    <a href="<?php echo esc_url( home_url( '/' . $service['slug'] . '/' ) ); ?>" class="svc-card svc-card-link">
+                <?php foreach ( $services as $slug => $service ) : ?>
+                    <a href="<?php echo esc_url( home_url( '/' . $slug . '/' ) ); ?>" class="svc-card svc-card-link">
                         <div class="svc-icon-wrap">
-                            <i class="fa-solid <?php echo esc_attr( $service['icon'] ); ?>"></i>
+                            <i class="fa-solid <?php echo esc_attr( needscare_get_service_icon_fa( $slug ) ); ?>"></i>
                         </div>
                         <h3 class="svc-title"><?php echo esc_html( $service['title'] ); ?></h3>
                         <p class="svc-desc"><?php echo esc_html( $service['desc'] ); ?></p>
