@@ -409,6 +409,17 @@ function needscare_customizer( $wp_customize ) {
         'type'    => 'email',
     ) );
 
+    $wp_customize->add_setting( 'contact_email_2', array(
+        'default'           => '',
+        'sanitize_callback' => 'sanitize_email',
+    ) );
+    $wp_customize->add_control( 'contact_email_2', array(
+        'label'       => __( 'Second email address', 'needscare' ),
+        'description' => __( 'Optional. Displayed under the primary email when set.', 'needscare' ),
+        'section'     => 'needscare_contact',
+        'type'        => 'email',
+    ) );
+
     $wp_customize->add_setting( 'contact_address', array(
         'default'           => '123 Care Avenue, Donnybrook VIC 3064',
         'sanitize_callback' => 'sanitize_text_field',
@@ -577,6 +588,28 @@ function needscare_contact_tel_href() {
     $raw    = needscare_get( 'contact_phone', '0468 370 705' );
     $digits = preg_replace( '/\D+/', '', (string) $raw );
     return '' === $digits ? '' : 'tel:' . $digits;
+}
+
+/**
+ * Print a mailto link for a contact email, or escaped plain text if invalid. No output if trimmed empty.
+ *
+ * @param string $raw Value from Customizer or default.
+ */
+function needscare_print_mailto_link( $raw ) {
+    $raw = trim( (string) $raw );
+    if ( '' === $raw ) {
+        return;
+    }
+    $safe = sanitize_email( $raw );
+    if ( $safe ) {
+        printf(
+            '<a href="%s">%s</a>',
+            esc_url( 'mailto:' . $safe ),
+            esc_html( $raw )
+        );
+        return;
+    }
+    echo esc_html( $raw );
 }
 
 /**

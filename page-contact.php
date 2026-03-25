@@ -55,14 +55,13 @@ get_header(); ?>
                     <h4>Email</h4>
                     <p>
                         <?php
-                        $needscare_email = needscare_get( 'contact_email', 'info@needscare.com.au' );
-                        $needscare_mail  = sanitize_email( $needscare_email );
-                        if ( $needscare_mail ) :
-                            ?>
-                            <a href="<?php echo esc_url( 'mailto:' . $needscare_mail ); ?>"><?php echo esc_html( $needscare_email ); ?></a>
-                        <?php else : ?>
-                            <?php echo esc_html( $needscare_email ); ?>
-                        <?php endif; ?>
+                        needscare_print_mailto_link( needscare_get( 'contact_email', 'info@needscare.com.au' ) );
+                        $needscare_email_2 = needscare_get( 'contact_email_2', '' );
+                        if ( '' !== trim( (string) $needscare_email_2 ) ) {
+                            echo '<br>';
+                            needscare_print_mailto_link( $needscare_email_2 );
+                        }
+                        ?>
                     </p>
                 </div>
             </div>
