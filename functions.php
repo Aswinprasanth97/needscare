@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'NEEDSCARE_VERSION', '1.0.5' );
+define( 'NEEDSCARE_VERSION', '1.0.6' );
 define( 'NEEDSCARE_DIR', get_template_directory() );
 define( 'NEEDSCARE_URI', get_template_directory_uri() );
 
@@ -749,6 +749,46 @@ function needscare_gallery_permalink() {
  */
 function needscare_is_gallery_page() {
     return is_page_template( 'page-gallery.php' );
+}
+
+/**
+ * Permalink for the Terms and Conditions page (template or /terms-and-conditions/).
+ *
+ * @return string
+ */
+function needscare_terms_permalink() {
+    $pages = get_pages(
+        array(
+            'meta_key'    => '_wp_page_template',
+            'meta_value'  => 'page-terms-and-conditions.php',
+            'number'      => 1,
+            'post_status' => 'publish',
+        )
+    );
+    if ( ! empty( $pages ) ) {
+        return get_permalink( $pages[0]->ID );
+    }
+    return home_url( '/terms-and-conditions/' );
+}
+
+/**
+ * Permalink for the Privacy Policy page (template or /privacy-policy/).
+ *
+ * @return string
+ */
+function needscare_privacy_policy_permalink() {
+    $pages = get_pages(
+        array(
+            'meta_key'    => '_wp_page_template',
+            'meta_value'  => 'page-privacy-policy.php',
+            'number'      => 1,
+            'post_status' => 'publish',
+        )
+    );
+    if ( ! empty( $pages ) ) {
+        return get_permalink( $pages[0]->ID );
+    }
+    return home_url( '/privacy-policy/' );
 }
 
 /**

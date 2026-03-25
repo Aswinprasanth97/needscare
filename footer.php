@@ -93,8 +93,13 @@
     </div>
 
     <div class="footer-bottom">
-        <div class="container">
-            <p>&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved.</p>
+        <div class="container footer-bottom-inner">
+            <p class="footer-copyright">&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. <?php esc_html_e( 'All Rights Reserved.', 'needscare' ); ?></p>
+            <nav class="footer-legal" aria-label="<?php esc_attr_e( 'Legal', 'needscare' ); ?>">
+                <a href="<?php echo esc_url( needscare_terms_permalink() ); ?>"><?php esc_html_e( 'Terms and Conditions', 'needscare' ); ?></a>
+                <span class="footer-legal-sep" aria-hidden="true">&middot;</span>
+                <a href="<?php echo esc_url( needscare_privacy_policy_permalink() ); ?>"><?php esc_html_e( 'Privacy Policy', 'needscare' ); ?></a>
+            </nav>
         </div>
     </div>
 </footer>
