@@ -3957,8 +3957,8 @@ a.service-card-link:hover {
   width: 100%;
   min-height: clamp(300px, 52vh, 620px);
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .service-detail-featured-media.no-media {
@@ -3995,10 +3995,15 @@ a.service-card-link:hover {
   );
 }
 
-/* Uses .container for same max-width and horizontal padding as page sections below */
-.service-detail-featured-headline {
+/* Full-width strip so inner .container is block-level (not a flex item) — matches rest of page */
+.service-detail-featured-headline-bar {
   position: relative;
   z-index: 2;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.service-detail-featured-headline {
   padding-top: 28px;
   padding-bottom: 52px;
   text-align: left;

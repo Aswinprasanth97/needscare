@@ -64,19 +64,21 @@ $data         = isset( $defs[ $current_slug ] ) ? $defs[ $current_slug ] : array
 
             <div class="service-detail-featured-scrim" aria-hidden="true"></div>
 
-            <div class="container service-detail-featured-headline">
-                <nav class="service-detail-featured-breadcrumb" aria-label="<?php esc_attr_e( 'Breadcrumb', 'needscare' ); ?>">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'needscare' ); ?></a>
-                    <span class="service-detail-featured-breadcrumb-sep" aria-hidden="true">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </span>
-                    <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Services', 'needscare' ); ?></a>
-                    <span class="service-detail-featured-breadcrumb-sep" aria-hidden="true">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </span>
-                    <span class="service-detail-featured-breadcrumb-current"><?php the_title(); ?></span>
-                </nav>
-                <h1 id="service-detail-title" class="service-detail-featured-title"><?php the_title(); ?></h1>
+            <div class="service-detail-featured-headline-bar">
+                <div class="container service-detail-featured-headline">
+                    <nav class="service-detail-featured-breadcrumb" aria-label="<?php esc_attr_e( 'Breadcrumb', 'needscare' ); ?>">
+                        <a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Home', 'needscare' ); ?></a>
+                        <span class="service-detail-featured-breadcrumb-sep" aria-hidden="true">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </span>
+                        <a href="<?php echo esc_url( home_url( '/services/' ) ); ?>"><?php esc_html_e( 'Services', 'needscare' ); ?></a>
+                        <span class="service-detail-featured-breadcrumb-sep" aria-hidden="true">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </span>
+                        <span class="service-detail-featured-breadcrumb-current"><?php the_title(); ?></span>
+                    </nav>
+                    <h1 id="service-detail-title" class="service-detail-featured-title"><?php the_title(); ?></h1>
+                </div>
             </div>
         </div>
     </section>
