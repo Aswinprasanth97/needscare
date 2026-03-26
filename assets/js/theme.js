@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const indicators = carousel.querySelectorAll('.hero-indicator');
         let currentSlide = 0;
         let autoPlayInterval = null;
-        const INTERVAL_MS = 6000;
+        const INTERVAL_MS = 4000;
 
         function goToSlide(index) {
             slides[currentSlide].classList.remove('active');

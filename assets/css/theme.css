@@ -912,7 +912,7 @@ body.admin-bar .header {
 }
 
 .hero-indicator.active .hero-indicator-fill {
-  animation: heroIndicatorFill 6s linear forwards;
+  animation: heroIndicatorFill 4s linear forwards;
 }
 
 @keyframes heroIndicatorFill {
