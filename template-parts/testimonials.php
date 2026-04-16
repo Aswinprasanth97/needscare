@@ -15,32 +15,23 @@ $args = array(
 );
 
 $query = new WP_Query( $args );
-
-// Fallback to defaults if no testimonials are found in the DB
 $testimonials = array();
 
-if ( $query->have_posts() ) {
-    while ( $query->have_posts() ) {
-        $query->the_post();
-        $testimonials[] = array(
-            'name'   => get_the_title(),
-            'role'   => get_post_meta( get_the_ID(), '_testimonial_role', true ),
-            'quote'  => get_the_content(),
-            'rating' => absint( get_post_meta( get_the_ID(), '_testimonial_rating', true ) ?: 5 ),
-            'image'  => get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' ),
-        );
-    }
-    wp_reset_postdata();
-} else {
-    // If no dynamic testimonials, show example ones as fallback
-    $testimonials = array(
-        array( 'name' => 'Susan M.',  'role' => 'NDIS Participant',    'quote' => 'NeedsCare empowers me to live life on my terms with exceptional therapeutic and community nursing support. The team truly understands what independence means.', 'rating' => 5, 'image' => '' ),
-        array( 'name' => 'John D.',   'role' => 'Family Member',       'quote' => 'NeedsCare has been life-changing, providing compassionate and professional support that has helped my brother gain independence and confidence in daily life.', 'rating' => 5, 'image' => '' ),
-        array( 'name' => 'Liza K.',   'role' => 'Family Carer',        'quote' => "The team at NeedsCare is reliable and dedicated, improving my father's quality of life with personalized and attentive care every single day.", 'rating' => 5, 'image' => '' ),
-        array( 'name' => 'Marcus T.', 'role' => 'NDIS Participant',    'quote' => 'From community access to travel support, NeedsCare has opened doors I never thought possible. They genuinely care about my goals and wellbeing.', 'rating' => 5, 'image' => '' ),
-        array( 'name' => 'Priya S.',  'role' => 'Support Coordinator', 'quote' => "Working alongside NeedsCare has been seamless. Their professionalism and person-centred approach make them one of the best providers I've partnered with.", 'rating' => 5, 'image' => '' ),
+if ( ! $query->have_posts() ) {
+    return;
+}
+
+while ( $query->have_posts() ) {
+    $query->the_post();
+    $testimonials[] = array(
+        'name'   => get_the_title(),
+        'role'   => get_post_meta( get_the_ID(), '_testimonial_role', true ),
+        'quote'  => get_the_content(),
+        'rating' => absint( get_post_meta( get_the_ID(), '_testimonial_rating', true ) ?: 5 ),
+        'image'  => get_the_post_thumbnail_url( get_the_ID(), 'thumbnail' ),
     );
 }
+wp_reset_postdata();
 
 $total = count( $testimonials );
 ?>
